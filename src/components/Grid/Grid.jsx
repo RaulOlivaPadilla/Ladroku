@@ -14,6 +14,19 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
       firstCellByRoom.set(room.roomId, room.id)
     }
   })
+  const labelSpanByRoom = new Map()
+  rooms.forEach((room) => {
+    if (firstCellByRoom.get(room.roomId) !== room.id) return
+    let span = 1
+    while (rooms.some((candidate) => (
+      candidate.roomId === room.roomId
+      && candidate.row === room.row
+      && candidate.col === room.col + span
+    ))) {
+      span += 1
+    }
+    labelSpanByRoom.set(room.roomId, Math.min(span, Math.max(1, Math.ceil(room.name.length / 8))))
+  })
 
   return (
     <div className="grid" role="grid" style={{ '--grid-size': gridSize }} aria-label="Tablero de juego">
@@ -26,6 +39,7 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
             room={room}
             character={characterId ? charactersById[characterId] : null}
             showRoomName={firstCellByRoom.get(room.roomId) === room.id}
+            roomLabelSpan={labelSpanByRoom.get(room.roomId) ?? 1}
             selected={Boolean(selectedCharacterId)}
             invalid={room.id === invalidRoomId}
             joined={{

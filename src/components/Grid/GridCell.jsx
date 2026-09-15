@@ -23,7 +23,7 @@ function getVisibleTraits(room) {
   return room.traits.filter((_, index) => (room.row + room.col + index) % 3 === 0)
 }
 
-function GridCell({ room, character, selected, invalid, joined, showRoomName, onClick }) {
+function GridCell({ room, character, selected, invalid, joined, showRoomName, roomLabelSpan, onClick }) {
   const roomClass = room.name
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -49,7 +49,14 @@ function GridCell({ room, character, selected, invalid, joined, showRoomName, on
       aria-invalid={invalid}
       onClick={() => onClick(room)}
     >
-      {showRoomName && <span className="grid-cell__room">{room.name}</span>}
+      {showRoomName && (
+        <span
+          className="grid-cell__room"
+          style={{ '--room-label-span': roomLabelSpan }}
+        >
+          {room.name}
+        </span>
+      )}
       <span className="grid-cell__traits" aria-label={`Objetos: ${room.traits.join(', ')}`}>
         {getVisibleTraits(room).map((trait) => (
           <span key={trait} title={trait} aria-label={trait}>
