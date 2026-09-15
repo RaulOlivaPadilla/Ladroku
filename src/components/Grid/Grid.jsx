@@ -8,6 +8,12 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
       .map(([characterId, position]) => [`${position.row}-${position.col}`, characterId]),
   )
   const charactersById = Object.fromEntries((characters ?? []).map((character) => [character.id, character]))
+  const firstCellByRoom = new Map()
+  rooms.forEach((room) => {
+    if (!firstCellByRoom.has(room.roomId)) {
+      firstCellByRoom.set(room.roomId, room.id)
+    }
+  })
 
   return (
     <div className="grid" role="grid" style={{ '--grid-size': gridSize }} aria-label="Tablero de juego">
@@ -19,6 +25,7 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
             key={room.id}
             room={room}
             character={characterId ? charactersById[characterId] : null}
+            showRoomName={firstCellByRoom.get(room.roomId) === room.id}
             selected={Boolean(selectedCharacterId)}
             invalid={room.id === invalidRoomId}
             joined={{

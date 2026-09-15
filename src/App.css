@@ -204,6 +204,26 @@ h1 {
   transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
+.grid-cell--region-room-a {
+  background: #33291f;
+}
+
+.grid-cell--region-room-b {
+  background: #29343b;
+}
+
+.grid-cell--region-room-c {
+  background: #302b3d;
+}
+
+.grid-cell--region-room-d {
+  background: #263a2c;
+}
+
+.grid-cell--region-room-e {
+  background: #3b2b2a;
+}
+
 .grid-cell--joined-top {
   border-top-color: transparent;
   border-top-left-radius: 0;
@@ -283,11 +303,15 @@ h1 {
 }
 
 .grid-cell__traits {
-  overflow: hidden;
-  color: #aa9274;
-  font-size: clamp(0.55rem, 1.5vw, 0.7rem);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  gap: 0.25rem;
+  color: #e5c98d;
+  font-size: clamp(0.9rem, 2.8vw, 1.25rem);
+  line-height: 1;
+}
+
+.grid-cell__traits span {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
 }
 
 .grid-cell__character {

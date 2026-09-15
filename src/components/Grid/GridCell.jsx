@@ -1,6 +1,25 @@
 import clsx from 'clsx'
 
-function GridCell({ room, character, selected, invalid, joined, onClick }) {
+const traitIcons = {
+  alfombra: '🧶',
+  barriles: '🛢️',
+  'caja fuerte': '🔐',
+  cuadros: '🖼️',
+  escritorio: '🪑',
+  escalera: '🪜',
+  estanterías: '📚',
+  fogón: '🔥',
+  chimenea: '🔥',
+  'luz tenue': '🕯️',
+  mesa: '🍽️',
+  'mesa larga': '🍽️',
+  piano: '🎹',
+  plantas: '🪴',
+  ventana: '🪟',
+  espejo: '🪞',
+}
+
+function GridCell({ room, character, selected, invalid, joined, showRoomName, onClick }) {
   const roomClass = room.name
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -12,6 +31,7 @@ function GridCell({ room, character, selected, invalid, joined, onClick }) {
       className={clsx(
         'grid-cell',
         `grid-cell--room-${roomClass}`,
+        `grid-cell--region-${room.roomId}`,
         selected && 'grid-cell--selected',
         invalid && 'grid-cell--invalid',
         joined?.top && 'grid-cell--joined-top',
@@ -25,8 +45,14 @@ function GridCell({ room, character, selected, invalid, joined, onClick }) {
       aria-invalid={invalid}
       onClick={() => onClick(room)}
     >
-      <span className="grid-cell__room">{room.name}</span>
-      <span className="grid-cell__traits">{room.traits.join(' · ')}</span>
+      {showRoomName && <span className="grid-cell__room">{room.name}</span>}
+      <span className="grid-cell__traits" aria-label={`Objetos: ${room.traits.join(', ')}`}>
+        {room.traits.map((trait) => (
+          <span key={trait} title={trait} aria-label={trait}>
+            {traitIcons[trait] ?? '•'}
+          </span>
+        ))}
+      </span>
       {character && <span className="grid-cell__character">{character.name}</span>}
     </button>
   )
