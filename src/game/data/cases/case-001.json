@@ -1,0 +1,67 @@
+{
+  "id": "case-001",
+  "title": "El collar desaparecido",
+  "gridSize": 5,
+  "victim": {
+    "id": "victim",
+    "name": "Doña Elvira",
+    "avatar": "elvira.png"
+  },
+  "stolenItem": {
+    "id": "collar",
+    "name": "Collar de perlas",
+    "icon": "💎"
+  },
+  "rooms": [
+    { "id": "room-0-0", "row": 0, "col": 0, "name": "Cocina", "traits": ["ventana", "fogón"] },
+    { "id": "room-0-1", "row": 0, "col": 1, "name": "Salón", "traits": ["chimenea", "alfombra"] },
+    { "id": "room-0-2", "row": 0, "col": 2, "name": "Biblioteca", "traits": ["estanterías", "escritorio"] },
+    { "id": "room-0-3", "row": 0, "col": 3, "name": "Invernadero", "traits": ["ventana", "plantas"] },
+    { "id": "room-0-4", "row": 0, "col": 4, "name": "Galería", "traits": ["cuadros", "alfombra"] },
+    { "id": "room-1-0", "row": 1, "col": 0, "name": "Despacho", "traits": ["caja fuerte", "escritorio"] },
+    { "id": "room-1-1", "row": 1, "col": 1, "name": "Bodega", "traits": ["barriles", "luz tenue"] },
+    { "id": "room-1-2", "row": 1, "col": 2, "name": "Comedor", "traits": ["ventana", "mesa larga"] },
+    { "id": "room-1-3", "row": 1, "col": 3, "name": "Vestíbulo", "traits": ["escalera", "espejo"] },
+    { "id": "room-1-4", "row": 1, "col": 4, "name": "Sala de música", "traits": ["piano", "alfombra"] },
+    { "id": "room-2-0", "row": 2, "col": 0, "name": "Cocina", "traits": ["ventana", "fogón"] },
+    { "id": "room-2-1", "row": 2, "col": 1, "name": "Salón", "traits": ["chimenea", "alfombra"] },
+    { "id": "room-2-2", "row": 2, "col": 2, "name": "Biblioteca", "traits": ["estanterías", "escritorio"] },
+    { "id": "room-2-3", "row": 2, "col": 3, "name": "Invernadero", "traits": ["ventana", "plantas"] },
+    { "id": "room-2-4", "row": 2, "col": 4, "name": "Galería", "traits": ["cuadros", "alfombra"] },
+    { "id": "room-3-0", "row": 3, "col": 0, "name": "Despacho", "traits": ["caja fuerte", "escritorio"] },
+    { "id": "room-3-1", "row": 3, "col": 1, "name": "Bodega", "traits": ["barriles", "luz tenue"] },
+    { "id": "room-3-2", "row": 3, "col": 2, "name": "Comedor", "traits": ["ventana", "mesa larga"] },
+    { "id": "room-3-3", "row": 3, "col": 3, "name": "Vestíbulo", "traits": ["escalera", "espejo"] },
+    { "id": "room-3-4", "row": 3, "col": 4, "name": "Sala de música", "traits": ["piano", "alfombra"] },
+    { "id": "room-4-0", "row": 4, "col": 0, "name": "Cocina", "traits": ["ventana", "fogón"] },
+    { "id": "room-4-1", "row": 4, "col": 1, "name": "Salón", "traits": ["chimenea", "alfombra"] },
+    { "id": "room-4-2", "row": 4, "col": 2, "name": "Biblioteca", "traits": ["estanterías", "escritorio"] },
+    { "id": "room-4-3", "row": 4, "col": 3, "name": "Invernadero", "traits": ["ventana", "plantas"] },
+    { "id": "room-4-4", "row": 4, "col": 4, "name": "Galería", "traits": ["cuadros", "alfombra"] }
+  ],
+  "characters": [
+    { "id": "victim", "name": "Doña Elvira", "avatar": "elvira.png", "isThief": false },
+    { "id": "s1", "name": "El mayordomo", "avatar": "mayordomo.png", "isThief": true },
+    { "id": "s2", "name": "La jardinera", "avatar": "jardinera.png", "isThief": false },
+    { "id": "s3", "name": "El cocinero", "avatar": "cocinero.png", "isThief": false },
+    { "id": "s4", "name": "La restauradora", "avatar": "restauradora.png", "isThief": false }
+  ],
+  "solution": {
+    "positions": {
+      "victim": { "row": 0, "col": 0 },
+      "s1": { "row": 1, "col": 1 },
+      "s2": { "row": 2, "col": 2 },
+      "s3": { "row": 3, "col": 3 },
+      "s4": { "row": 4, "col": 4 }
+    },
+    "thiefId": "s1",
+    "stolenFromRoom": "room-1-1"
+  },
+  "clues": [
+    { "id": "c1", "type": "roomHasTrait", "subject": "victim", "trait": "ventana", "text": "Doña Elvira estaba en una habitación con ventana." },
+    { "id": "c2", "type": "notSameRow", "subjects": ["s1", "victim"], "text": "El mayordomo no estaba en el mismo pasillo que Doña Elvira." },
+    { "id": "c3", "type": "roomHasTrait", "subject": "s1", "trait": "luz tenue", "text": "El mayordomo se ocultó en una habitación con luz tenue." },
+    { "id": "c4", "type": "notSameRow", "subjects": ["s2", "s3"], "text": "La jardinera y el cocinero no recorrieron el mismo pasillo." },
+    { "id": "c5", "type": "notSameCol", "subjects": ["s3", "s4"], "text": "El cocinero no estaba en la misma columna que la restauradora." }
+  ]
+}
