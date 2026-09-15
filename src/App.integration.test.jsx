@@ -112,16 +112,18 @@ describe('Ladroku game flow', () => {
     expect(screen.getByText('Reloj de bolsillo', { selector: 'strong' })).toBeInTheDocument()
   })
 
-  it('shows feedback when placing a character in an occupied row', async () => {
+  it('disables cells that share a row or column with a placed character', async () => {
     render(<App />)
 
     await screen.findAllByText('El collar desaparecido', { selector: 'p' })
     fireEvent.click(screen.getByRole('button', { name: /doña elvira/i }))
     fireEvent.click(screen.getAllByRole('gridcell')[0])
     fireEvent.click(screen.getByRole('button', { name: /el mayordomo/i }))
-    const occupiedCell = screen.getAllByRole('gridcell')[0]
-    fireEvent.click(occupiedCell)
+    const gridCells = screen.getAllByRole('gridcell')
 
-    expect(occupiedCell).toHaveAttribute('aria-invalid', 'true')
+    expect(gridCells[0]).toBeDisabled()
+    expect(gridCells[1]).toBeDisabled()
+    expect(gridCells[5]).toBeDisabled()
+    expect(gridCells[6]).not.toBeDisabled()
   })
 })

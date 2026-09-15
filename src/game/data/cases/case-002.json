@@ -59,9 +59,9 @@
   },
   "clues": [
     { "id": "c1", "type": "roomHasTrait", "subject": "victim", "trait": "ventana", "text": "Don Mateo se encontraba en una habitación con ventana." },
-    { "id": "c2", "type": "notSameCol", "subjects": ["s1", "victim"], "text": "El mayordomo no estaba en la misma columna que Don Mateo." },
+    { "id": "c2", "type": "rowRange", "subject": "s1", "min": 1, "max": 3, "text": "El mayordomo se encontraba entre el segundo y el cuarto pasillo." },
     { "id": "c3", "type": "roomHasTrait", "subject": "s3", "trait": "ventana", "text": "El cocinero pasó por una sala con ventana." },
-    { "id": "c4", "type": "notSameCol", "subjects": ["s2", "s4"], "text": "La jardinera y la restauradora no estaban alineadas con la misma columna." },
-    { "id": "c5", "type": "notSameRow", "subjects": ["s1", "s4"], "text": "El mayordomo y la restauradora no recorrieron el mismo pasillo." }
+    { "id": "c4", "type": "colRange", "subject": "s2", "min": 1, "max": 3, "text": "La jardinera estaba entre la segunda y la cuarta columna." },
+    { "id": "c5", "type": "rowRange", "subject": "s4", "min": 2, "max": 4, "text": "La restauradora se encontraba entre el tercer y el quinto pasillo." }
   ]
 }

@@ -33,6 +33,15 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
       {rooms.map((room) => {
         const characterId = characterByPosition.get(`${room.row}-${room.col}`)
         const sameRoom = (row, col) => roomByPosition.get(`${row}-${col}`)?.roomId === room.roomId
+        const isCurrentCharacterCell = characterId === selectedCharacterId
+        const isBlockedByPlacedCharacter = Object.entries(positions ?? {}).some(
+          ([placedId, position]) => placedId !== selectedCharacterId
+            && position
+            && (position.row === room.row || position.col === room.col),
+        )
+        const isBlocked = Boolean(selectedCharacterId)
+          && !isCurrentCharacterCell
+          && (Boolean(characterId) || isBlockedByPlacedCharacter)
         return (
           <GridCell
             key={room.id}
@@ -41,6 +50,7 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, inv
             showRoomName={firstCellByRoom.get(room.roomId) === room.id}
             roomLabelSpan={labelSpanByRoom.get(room.roomId) ?? 1}
             selected={Boolean(selectedCharacterId)}
+            disabled={isBlocked}
             invalid={room.id === invalidRoomId}
             joined={{
               top: sameRoom(room.row - 1, room.col),

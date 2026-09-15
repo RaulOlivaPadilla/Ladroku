@@ -59,9 +59,9 @@
   },
   "clues": [
     { "id": "c1", "type": "roomHasTrait", "subject": "victim", "trait": "ventana", "text": "Doña Elvira estaba en una habitación con ventana." },
-    { "id": "c2", "type": "notSameRow", "subjects": ["s1", "victim"], "text": "El mayordomo no estaba en el mismo pasillo que Doña Elvira." },
+    { "id": "c2", "type": "rowRange", "subject": "s1", "min": 1, "max": 3, "text": "El mayordomo se encontraba entre el segundo y el cuarto pasillo." },
     { "id": "c3", "type": "roomHasTrait", "subject": "s1", "trait": "luz tenue", "text": "El mayordomo se ocultó en una habitación con luz tenue." },
-    { "id": "c4", "type": "notSameRow", "subjects": ["s2", "s3"], "text": "La jardinera y el cocinero no recorrieron el mismo pasillo." },
-    { "id": "c5", "type": "notSameCol", "subjects": ["s3", "s4"], "text": "El cocinero no estaba en la misma columna que la restauradora." }
+    { "id": "c4", "type": "colRange", "subject": "s2", "min": 1, "max": 3, "text": "La jardinera estaba entre la segunda y la cuarta columna." },
+    { "id": "c5", "type": "rowRange", "subject": "s3", "min": 2, "max": 4, "text": "El cocinero se encontraba entre el tercer y el quinto pasillo." }
   ]
 }

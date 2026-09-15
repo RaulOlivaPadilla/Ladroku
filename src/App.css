@@ -295,6 +295,18 @@ h1 {
   filter: saturate(1.08) brightness(0.98);
 }
 
+.grid-cell--disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.35) saturate(0.55);
+  opacity: 0.48;
+}
+
+.grid-cell--disabled:hover {
+  border-color: rgba(77, 105, 119, 0.28);
+  filter: grayscale(0.35) saturate(0.55);
+  transform: none;
+}
+
 .grid-cell--selected:not(:has(.grid-cell__character)):hover {
   transform: translateY(-2px);
 }
