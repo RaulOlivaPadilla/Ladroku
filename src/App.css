@@ -314,13 +314,11 @@ h1 {
   display: block;
   width: calc(var(--room-label-span, 1) * 100% - 0.8rem);
   padding: 0.2rem 0.35rem;
-  border: 1px solid rgba(255, 236, 190, 0.24);
-  border-radius: 0.35rem;
-  background: rgba(20, 15, 10, 0.64);
   color: #f4ead5;
   font-size: clamp(0.6rem, 1.6vw, 0.8rem);
   line-height: 1.15;
   text-align: left;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   white-space: normal;
 }
 
