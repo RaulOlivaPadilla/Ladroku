@@ -201,12 +201,23 @@ h1 {
   background: #2b221a;
   text-align: left;
   cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
 .grid-cell:hover,
 .grid-cell--selected {
   border-color: #d59b45;
   background: #3a2b1c;
+}
+
+.grid-cell--selected:not(:has(.grid-cell__character)):hover {
+  transform: translateY(-2px);
+}
+
+.grid-cell--invalid {
+  border-color: #d76552;
+  background: #51261f;
+  animation: invalid-cell 350ms ease-in-out 2;
 }
 
 .grid-cell__room,
@@ -229,6 +240,24 @@ h1 {
 
 .grid-cell__character {
   color: #f3c477;
+  animation: character-placed 260ms ease-out;
+}
+
+@keyframes character-placed {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes invalid-cell {
+  50% {
+    transform: translateX(4px);
+  }
 }
 
 .suspect-list,
@@ -253,12 +282,21 @@ h1 {
 .suspect-card {
   padding: 0.65rem;
   cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
 .suspect-card:hover,
 .suspect-card--selected {
   border-color: #a8712c;
   background: #332519;
+}
+
+.suspect-card:hover {
+  transform: translateX(2px);
+}
+
+.suspect-card--placed {
+  opacity: 0.72;
 }
 
 .suspect-card__avatar {
@@ -296,6 +334,19 @@ h1 {
   border: 1px solid #4b3825;
   border-radius: 1rem;
   background: #221c16;
+}
+
+.toolbar > span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #99866e;
+}
+
+.toolbar time,
+.toolbar strong {
+  color: #f3c477;
+  font-variant-numeric: tabular-nums;
 }
 
 .toolbar label,
@@ -391,5 +442,30 @@ select,
 
   .game-layout {
     grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolbar label,
+  .toolbar .primary-button {
+    grid-column: 1 / -1;
+  }
+
+  .toolbar > span {
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,6 +1,6 @@
 import GridCell from './GridCell.jsx'
 
-function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, onCellClick }) {
+function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, invalidRoomId, onCellClick }) {
   const characterByPosition = new Map(
     Object.entries(positions ?? {})
       .filter(([, position]) => position)
@@ -18,6 +18,7 @@ function Grid({ gridSize, rooms, characters, positions, selectedCharacterId, onC
             room={room}
             character={characterId ? charactersById[characterId] : null}
             selected={Boolean(selectedCharacterId)}
+            invalid={room.id === invalidRoomId}
             onClick={onCellClick}
           />
         )

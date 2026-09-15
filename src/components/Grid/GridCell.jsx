@@ -7,6 +7,7 @@ function GridCell({ room, character, selected, invalid, onClick }) {
       type="button"
       role="gridcell"
       aria-label={`${room.name}, fila ${room.row + 1}, columna ${room.col + 1}`}
+      aria-invalid={invalid}
       onClick={() => onClick(room)}
     >
       <span className="grid-cell__room">{room.name}</span>

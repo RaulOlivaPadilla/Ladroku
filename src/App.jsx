@@ -14,6 +14,7 @@ const cases = [case001, case002]
 function App() {
   const [isAccusationOpen, setIsAccusationOpen] = useState(false)
   const [checkedClueIds, setCheckedClueIds] = useState([])
+  const [invalidRoomId, setInvalidRoomId] = useState(null)
   const {
     currentCase,
     playerPositions,
@@ -53,7 +54,11 @@ function App() {
 
   const handleCellClick = (room) => {
     if (selectedCharacterId) {
-      placeCharacter(selectedCharacterId, room.row, room.col)
+      const placed = placeCharacter(selectedCharacterId, room.row, room.col)
+      if (!placed) {
+        setInvalidRoomId(room.id)
+        window.setTimeout(() => setInvalidRoomId(null), 700)
+      }
     }
   }
 
@@ -107,7 +112,11 @@ function App() {
           <div className="section-heading">
             <div>
               <h2 id="board-title">Escena del robo</h2>
-              <p>Selecciona un personaje y después una habitación.</p>
+              <p>
+                {selectedCharacterId
+                  ? 'Ahora selecciona una habitación libre.'
+                  : 'Selecciona un personaje y después una habitación.'}
+              </p>
             </div>
             <span>{Object.values(playerPositions).filter(Boolean).length}/{currentCase.characters.length}</span>
           </div>
@@ -117,6 +126,7 @@ function App() {
             characters={currentCase.characters}
             positions={playerPositions}
             selectedCharacterId={selectedCharacterId}
+            invalidRoomId={invalidRoomId}
             onCellClick={handleCellClick}
           />
         </section>
