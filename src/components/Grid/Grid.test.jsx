@@ -24,6 +24,8 @@ describe('Grid', () => {
     expect(screen.getByText('El mayordomo')).toBeInTheDocument()
     expect(screen.getByText('Cocina')).toBeInTheDocument()
     expect(screen.getByTitle('ventana')).toBeInTheDocument()
+    expect(screen.getByRole('gridcell', { name: /salón, fila 1, columna 2/i }))
+      .toHaveAttribute('aria-label', 'Salón, fila 1, columna 2')
     expect(screen.getAllByRole('gridcell')).toHaveLength(4)
   })
 })

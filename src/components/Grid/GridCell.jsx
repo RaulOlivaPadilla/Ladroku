@@ -19,6 +19,10 @@ const traitIcons = {
   espejo: '🪞',
 }
 
+function getVisibleTraits(room) {
+  return room.traits.filter((_, index) => (room.row + room.col + index) % 3 === 0)
+}
+
 function GridCell({ room, character, selected, invalid, joined, showRoomName, onClick }) {
   const roomClass = room.name
     .normalize('NFD')
@@ -47,7 +51,7 @@ function GridCell({ room, character, selected, invalid, joined, showRoomName, on
     >
       {showRoomName && <span className="grid-cell__room">{room.name}</span>}
       <span className="grid-cell__traits" aria-label={`Objetos: ${room.traits.join(', ')}`}>
-        {room.traits.map((trait) => (
+        {getVisibleTraits(room).map((trait) => (
           <span key={trait} title={trait} aria-label={trait}>
             {traitIcons[trait] ?? '•'}
           </span>
