@@ -5,6 +5,7 @@ function GridCell({ room, character, selected, invalid, onClick }) {
     <button
       className={clsx('grid-cell', selected && 'grid-cell--selected', invalid && 'grid-cell--invalid')}
       type="button"
+      role="gridcell"
       aria-label={`${room.name}, fila ${room.row + 1}, columna ${room.col + 1}`}
       onClick={() => onClick(room)}
     >

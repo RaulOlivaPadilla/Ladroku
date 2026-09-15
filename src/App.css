@@ -31,6 +31,95 @@ button {
     #171411;
 }
 
+.game-shell {
+  width: min(100%, 78rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(168, 113, 44, 0.12), transparent 40rem),
+    #171411;
+}
+
+.game-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.game-header h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+}
+
+.case-title {
+  margin: 0.75rem 0 0;
+  color: #c9bda8;
+  font-size: 1.1rem;
+}
+
+.win-banner {
+  border: 1px solid #6eaa78;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  color: #a8e1b0;
+  background: #1d3523;
+  font-weight: 700;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(17rem, 0.75fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.board-panel {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #f3c477;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.section-heading p {
+  margin: 0.35rem 0 0;
+  color: #99866e;
+  font-size: 0.9rem;
+}
+
+.section-heading > span {
+  color: #d59b45;
+  font-weight: 700;
+}
+
+.side-panels {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.solution-panel {
+  margin-top: 1rem;
+}
+
+.solution-panel p {
+  margin: 0;
+  color: #c9bda8;
+  line-height: 1.6;
+}
+
 .intro-card {
   width: min(100%, 42rem);
   padding: clamp(2rem, 8vw, 5rem);
@@ -293,5 +382,14 @@ select,
 
   .toolbar {
     align-items: stretch;
+  }
+
+  .game-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
   }
 }

@@ -22,6 +22,6 @@ describe('Grid', () => {
 
     expect(screen.getByRole('grid', { name: 'Tablero de juego' })).toBeInTheDocument()
     expect(screen.getByText('El mayordomo')).toBeInTheDocument()
-    expect(screen.getAllByRole('button')).toHaveLength(4)
+    expect(screen.getAllByRole('gridcell')).toHaveLength(4)
   })
 })
