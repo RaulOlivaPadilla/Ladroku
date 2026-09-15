@@ -183,7 +183,7 @@ h1 {
 .grid {
   display: grid;
   grid-template-columns: repeat(var(--grid-size), minmax(0, 1fr));
-  gap: 0.45rem;
+  gap: 0;
   width: min(100%, 42rem);
   aspect-ratio: 1;
 }
@@ -195,13 +195,37 @@ h1 {
   justify-content: space-between;
   gap: 0.35rem;
   padding: 0.65rem;
-  border: 1px solid #5d4429;
+  border: 2px solid #5d4429;
   border-radius: 0.5rem;
   color: #c9bda8;
   background: #2b221a;
   text-align: left;
   cursor: pointer;
   transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.grid-cell--joined-top {
+  border-top-color: transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.grid-cell--joined-right {
+  border-right-color: transparent;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.grid-cell--joined-bottom {
+  border-bottom-color: transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.grid-cell--joined-left {
+  border-left-color: transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .grid-cell--room-cocina {

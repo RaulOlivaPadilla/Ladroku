@@ -53,7 +53,7 @@ describe('useGameStore', () => {
     expect(getState().submitAccusation({
       suspectId: 's1',
       objectId: 'collar',
-      roomId: 'room-1-1',
+      roomId: 'room-a-1-1',
     })).toBe(true)
     expect(getState().status).toBe('won')
   })

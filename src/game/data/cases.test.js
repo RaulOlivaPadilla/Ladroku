@@ -12,12 +12,33 @@ function hasUniqueCoordinates(positions) {
   return new Set(rows).size === values.length && new Set(columns).size === values.length
 }
 
+function hasConnectedCells(rooms, roomId) {
+  const cells = rooms.filter((room) => room.roomId === roomId)
+  const visited = new Set([`${cells[0].row}-${cells[0].col}`])
+  const pending = [cells[0]]
+
+  while (pending.length) {
+    const current = pending.pop()
+    rooms.forEach((room) => {
+      const key = `${room.row}-${room.col}`
+      const adjacent = Math.abs(room.row - current.row) + Math.abs(room.col - current.col) === 1
+      if (room.roomId === roomId && adjacent && !visited.has(key)) {
+        visited.add(key)
+        pending.push(room)
+      }
+    })
+  }
+
+  return visited.size === cells.length
+}
+
 describe('Ladroku case data', () => {
   it.each(cases)('$id follows the case model rules', (gameCase) => {
     const { gridSize, characters, rooms, solution } = gameCase
     const thiefCharacters = characters.filter((character) => character.isThief)
     const thiefPosition = solution.positions[solution.thiefId]
     const stolenRoom = rooms.find((room) => room.id === solution.stolenFromRoom)
+    const roomIds = [...new Set(rooms.map((room) => room.roomId))]
     const roomCellCounts = rooms.reduce((counts, room) => {
       counts[room.name] = (counts[room.name] ?? 0) + 1
       return counts
@@ -28,6 +49,7 @@ describe('Ladroku case data', () => {
     expect(Object.keys(roomCellCounts).length).toBeGreaterThanOrEqual(3)
     expect(Object.keys(roomCellCounts).length).toBeLessThanOrEqual(6)
     expect(Object.values(roomCellCounts).every((count) => count > 1)).toBe(true)
+    expect(roomIds.every((roomId) => hasConnectedCells(rooms, roomId))).toBe(true)
     expect(Object.keys(solution.positions)).toHaveLength(gridSize)
     expect(hasUniqueCoordinates(solution.positions)).toBe(true)
     expect(thiefCharacters).toHaveLength(1)

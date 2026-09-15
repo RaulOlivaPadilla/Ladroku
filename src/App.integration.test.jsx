@@ -41,7 +41,7 @@ describe('Ladroku game flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Acusar' }))
     fireEvent.change(screen.getByLabelText('Ladrón'), { target: { value: 's1' } })
     fireEvent.change(screen.getByLabelText('Objeto robado'), { target: { value: 'collar' } })
-    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-1-1' } })
+    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-a-1-1' } })
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Acusar' }))
 
     await waitFor(() => {
@@ -64,7 +64,7 @@ describe('Ladroku game flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Acusar' }))
     fireEvent.change(screen.getByLabelText('Ladrón'), { target: { value: 's2' } })
     fireEvent.change(screen.getByLabelText('Objeto robado'), { target: { value: 'collar' } })
-    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-1-1' } })
+    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-a-1-1' } })
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Acusar' }))
 
     expect(screen.getByText(/la acusación no es correcta/i)).toBeInTheDocument()
@@ -105,7 +105,7 @@ describe('Ladroku game flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Acusar' }))
     fireEvent.change(screen.getByLabelText('Ladrón'), { target: { value: 's3' } })
     fireEvent.change(screen.getByLabelText('Objeto robado'), { target: { value: 'reloj' } })
-    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-3-1' } })
+    fireEvent.change(screen.getByLabelText('Habitación'), { target: { value: 'room-d-3-1' } })
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Acusar' }))
 
     expect(await screen.findByText('Caso resuelto')).toBeInTheDocument()
