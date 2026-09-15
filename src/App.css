@@ -76,3 +76,222 @@ h1 {
   font-weight: 700;
   opacity: 0.8;
 }
+
+.panel {
+  padding: 1.25rem;
+  border: 1px solid #4b3825;
+  border-radius: 1rem;
+  background: #221c16;
+}
+
+.panel h2,
+.modal h2 {
+  margin: 0 0 1rem;
+  color: #f3c477;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), minmax(0, 1fr));
+  gap: 0.45rem;
+  width: min(100%, 42rem);
+  aspect-ratio: 1;
+}
+
+.grid-cell {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.65rem;
+  border: 1px solid #5d4429;
+  border-radius: 0.5rem;
+  color: #c9bda8;
+  background: #2b221a;
+  text-align: left;
+  cursor: pointer;
+}
+
+.grid-cell:hover,
+.grid-cell--selected {
+  border-color: #d59b45;
+  background: #3a2b1c;
+}
+
+.grid-cell__room,
+.grid-cell__character {
+  overflow: hidden;
+  color: #f4ead5;
+  font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-cell__traits {
+  overflow: hidden;
+  color: #aa9274;
+  font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-cell__character {
+  color: #f3c477;
+}
+
+.suspect-list,
+.clue-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.suspect-card,
+.clue-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 0.6rem;
+  color: #c9bda8;
+  background: transparent;
+  text-align: left;
+}
+
+.suspect-card {
+  padding: 0.65rem;
+  cursor: pointer;
+}
+
+.suspect-card:hover,
+.suspect-card--selected {
+  border-color: #a8712c;
+  background: #332519;
+}
+
+.suspect-card__avatar {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #24190e;
+  background: #d59b45;
+}
+
+.suspect-card small {
+  display: block;
+  margin-top: 0.2rem;
+  color: #99866e;
+}
+
+.clue-card {
+  padding: 0.5rem;
+  line-height: 1.45;
+}
+
+.clue-card--checked {
+  color: #8f806c;
+  text-decoration: line-through;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #4b3825;
+  border-radius: 1rem;
+  background: #221c16;
+}
+
+.toolbar label,
+.modal label {
+  display: grid;
+  gap: 0.35rem;
+  color: #c9bda8;
+  font-size: 0.85rem;
+}
+
+select,
+.toolbar button,
+.modal button {
+  border: 1px solid #6a4d2b;
+  border-radius: 0.45rem;
+  padding: 0.6rem 0.75rem;
+  color: #f4ead5;
+  background: #2b221a;
+}
+
+.toolbar .primary-button,
+.modal .primary-button {
+  color: #24190e;
+  background: #d59b45;
+}
+
+.toolbar button,
+.modal button {
+  cursor: pointer;
+}
+
+.toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(10, 8, 6, 0.78);
+}
+
+.modal {
+  width: min(100%, 30rem);
+  padding: 1.5rem;
+  border: 1px solid #76552d;
+  border-radius: 1rem;
+  background: #221c16;
+  box-shadow: 0 1rem 3rem #0008;
+}
+
+.modal form {
+  display: grid;
+  gap: 1rem;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.result--correct {
+  color: #8fcf9c;
+}
+
+.result--wrong {
+  color: #ec8b78;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 0.75rem;
+  }
+
+  .grid-cell {
+    padding: 0.35rem;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+}
