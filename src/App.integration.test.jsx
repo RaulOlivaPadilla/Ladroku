@@ -78,14 +78,14 @@ describe('Ladroku game flow', () => {
 
     fireEvent.change(screen.getByLabelText('Caso'), { target: { value: 'case-002' } })
     expect(await screen.findByText('El reloj de bolsillo', { selector: 'p' })).toBeInTheDocument()
-    expect(screen.getByText('0/5')).toBeInTheDocument()
+    expect(screen.getByText('0/5 personajes')).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: /la jardinera/i }))
     fireEvent.click(screen.getAllByRole('gridcell')[12])
-    expect(screen.getByText('1/5')).toBeInTheDocument()
+    expect(screen.getByText('1/5 personajes')).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: 'Reiniciar' }))
-    expect(screen.getByText('0/5')).toBeInTheDocument()
+    expect(screen.getByText('0/5 personajes')).toBeInTheDocument()
     expect(screen.getAllByText('Sin colocar')).toHaveLength(5)
   })
 

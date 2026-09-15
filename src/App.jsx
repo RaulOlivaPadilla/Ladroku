@@ -118,7 +118,7 @@ function App() {
                   : 'Selecciona un personaje y después una habitación.'}
               </p>
             </div>
-            <span>{Object.values(playerPositions).filter(Boolean).length}/{currentCase.characters.length}</span>
+            <span>{Object.values(playerPositions).filter(Boolean).length}/{currentCase.characters.length} personajes</span>
           </div>
           <Grid
             gridSize={currentCase.gridSize}

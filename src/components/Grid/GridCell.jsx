@@ -1,9 +1,15 @@
 import clsx from 'clsx'
 
 function GridCell({ room, character, selected, invalid, onClick }) {
+  const roomClass = room.name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+
   return (
     <button
-      className={clsx('grid-cell', selected && 'grid-cell--selected', invalid && 'grid-cell--invalid')}
+      className={clsx('grid-cell', `grid-cell--room-${roomClass}`, selected && 'grid-cell--selected', invalid && 'grid-cell--invalid')}
       type="button"
       role="gridcell"
       aria-label={`${room.name}, fila ${room.row + 1}, columna ${room.col + 1}`}

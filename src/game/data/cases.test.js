@@ -18,9 +18,16 @@ describe('Ladroku case data', () => {
     const thiefCharacters = characters.filter((character) => character.isThief)
     const thiefPosition = solution.positions[solution.thiefId]
     const stolenRoom = rooms.find((room) => room.id === solution.stolenFromRoom)
+    const roomCellCounts = rooms.reduce((counts, room) => {
+      counts[room.name] = (counts[room.name] ?? 0) + 1
+      return counts
+    }, {})
 
     expect(characters).toHaveLength(gridSize)
     expect(rooms).toHaveLength(gridSize * gridSize)
+    expect(Object.keys(roomCellCounts).length).toBeGreaterThanOrEqual(3)
+    expect(Object.keys(roomCellCounts).length).toBeLessThanOrEqual(6)
+    expect(Object.values(roomCellCounts).every((count) => count > 1)).toBe(true)
     expect(Object.keys(solution.positions)).toHaveLength(gridSize)
     expect(hasUniqueCoordinates(solution.positions)).toBe(true)
     expect(thiefCharacters).toHaveLength(1)
