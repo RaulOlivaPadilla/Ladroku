@@ -2,43 +2,43 @@ import clsx from 'clsx'
 
 const traitIcons = {
   alfombra: '🟫',
-  barriles: '🛢️',
   'caja fuerte': '🗄️',
-  cuadros: '🖼️',
-  escritorio: '🪑',
   escalera: '🪜',
-  estanterías: '📚',
-  fogón: '🍳',
   chimenea: '🔥',
   'luz tenue': '🕯️',
-  mesa: '🪵',
-  'mesa larga': '🪵',
   piano: '🎹',
-  plantas: '🪴',
   árbol: '🌳',
   árboles: '🌳',
-  sofá: '🛋️',
-  sillón: '🪑',
   ventana: '🪟',
   espejo: '🪞',
 }
 
-function getVisibleTraits(room) {
-  return room.traits.filter((_, index) => (room.row + room.col + index) % 3 === 0)
+const traitAssets = {
+  barriles: '/game-assets/objetos-decoracion/objetos/barriles.svg',
+  cuadros: '/game-assets/objetos-decoracion/objetos/cuadro.svg',
+  escritorio: '/game-assets/objetos-decoracion/objetos/silla.svg',
+  estanterías: '/game-assets/objetos-decoracion/objetos/estanteria.svg',
+  fogón: '/game-assets/objetos-decoracion/objetos/fogon.svg',
+  'mesa larga': '/game-assets/objetos-decoracion/objetos/mesa.svg',
+  plantas: '/game-assets/objetos-decoracion/objetos/planta.svg',
+  sofá: '/game-assets/objetos-decoracion/objetos/sofa.svg',
 }
 
 function GridCell({
   room,
   character,
+  colorIndex,
   selected,
   disabled,
   invalid,
   joined,
   showRoomName,
+  trait,
   roomLabelSpan,
   onClick,
 }) {
-  const roomClass = room.name
+  const displayName = room.name.replace(/\s+[A-Z]$/, '')
+  const roomClass = displayName
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
@@ -50,6 +50,11 @@ function GridCell({
         'grid-cell',
         `grid-cell--room-${roomClass}`,
         `grid-cell--region-${room.roomId}`,
+        colorIndex != null && `grid-cell--palette-${colorIndex}`,
+        joined?.hasTop && !joined.top && 'grid-cell--border-top',
+        joined?.hasRight && !joined.right && 'grid-cell--border-right',
+        joined?.hasBottom && !joined.bottom && 'grid-cell--border-bottom',
+        joined?.hasLeft && !joined.left && 'grid-cell--border-left',
         selected && 'grid-cell--selected',
         disabled && 'grid-cell--disabled',
         invalid && 'grid-cell--invalid',
@@ -60,7 +65,7 @@ function GridCell({
       )}
       type="button"
       role="gridcell"
-      aria-label={`${room.name}, fila ${room.row + 1}, columna ${room.col + 1}`}
+      aria-label={`${displayName}, fila ${room.row + 1}, columna ${room.col + 1}`}
       aria-disabled={disabled}
       aria-invalid={invalid}
       disabled={disabled}
@@ -71,15 +76,15 @@ function GridCell({
           className="grid-cell__room"
           style={{ '--room-label-span': roomLabelSpan }}
         >
-          {room.name}
+          {displayName}
         </span>
       )}
       <span className="grid-cell__traits" aria-label={`Objetos: ${room.traits.join(', ')}`}>
-        {getVisibleTraits(room).map((trait) => (
-          <span key={trait} title={trait} aria-label={trait}>
-            {traitIcons[trait] ?? '•'}
+        {trait && (
+          <span title={trait} aria-label={trait}>
+            {traitAssets[trait] ? <img src={traitAssets[trait]} alt="" /> : traitIcons[trait] ?? '•'}
           </span>
-        ))}
+        )}
       </span>
       {character && <span className="grid-cell__character">{character.name}</span>}
     </button>

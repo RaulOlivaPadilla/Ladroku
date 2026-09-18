@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect x="12" y="10" width="40" height="44" rx="3" fill="#6e4a32" stroke="#4a4138" stroke-width="1.5"/>
+  <g transform="translate(18 18)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(26 18)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(34 18)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(42 18)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(18 30)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(26 30)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(34 30)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(42 30)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(18 42)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(26 42)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(34 42)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+  <g transform="translate(42 42)">
+    <ellipse cx="0" cy="4" rx="2.4" ry="6" fill="#3a2440" stroke="#4a4138" stroke-width="0.8"/>
+    <rect x="-1.4" y="-4" width="2.8" height="4" rx="0.8" fill="#c4a464"/>
+  </g>
+</svg>

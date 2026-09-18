@@ -199,8 +199,8 @@ h1 {
   justify-content: center;
   gap: 0.35rem;
   padding: 0.65rem;
-  border: 2px solid rgba(77, 105, 119, 0.28);
-  border-radius: 0.5rem;
+  border: 0;
+  border-radius: 0;
   color: #365063;
   background: #e8f0f2;
   text-align: left;
@@ -237,56 +237,55 @@ h1 {
   background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(190, 109, 135, 0.1) 9px, transparent 10px);
 }
 
-.grid-cell--joined-top {
-  border-top-color: transparent;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.grid-cell--palette-0 {
+  background-color: #f5e7d9;
+  background-image: radial-gradient(rgba(194, 126, 91, 0.16) 1px, transparent 1px);
+  background-size: 12px 12px;
 }
 
-.grid-cell--joined-right {
-  border-right-color: transparent;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.grid-cell--palette-1 {
+  background-color: #dceff0;
+  background-image: linear-gradient(135deg, rgba(93, 164, 164, 0.12) 25%, transparent 25%, transparent 50%, rgba(93, 164, 164, 0.12) 50%, rgba(93, 164, 164, 0.12) 75%, transparent 75%);
+  background-size: 18px 18px;
 }
 
-.grid-cell--joined-bottom {
-  border-bottom-color: transparent;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.grid-cell--palette-2 {
+  background-color: #e9e3f3;
+  background-image: radial-gradient(rgba(128, 104, 171, 0.14) 2px, transparent 2px);
+  background-size: 16px 16px;
 }
 
-.grid-cell--joined-left {
-  border-left-color: transparent;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.grid-cell--palette-3 {
+  background-color: #e1f0df;
+  background-image: linear-gradient(115deg, transparent 42%, rgba(87, 151, 103, 0.14) 43%, rgba(87, 151, 103, 0.14) 48%, transparent 49%);
+  background-size: 20px 20px;
 }
 
-.grid-cell--room-cocina {
-  box-shadow: inset 0 0 0 2px rgba(211, 137, 62, 0.2);
+.grid-cell--palette-4 {
+  background-color: #f4e3ea;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(190, 109, 135, 0.1) 9px, transparent 10px);
 }
 
-.grid-cell--room-salon {
-  box-shadow: inset 0 0 0 2px rgba(91, 145, 184, 0.16);
+.grid-cell--palette-5 {
+  background-color: #f1ead2;
+  background-image: radial-gradient(rgba(179, 138, 75, 0.14) 2px, transparent 2px);
+  background-size: 14px 14px;
 }
 
-.grid-cell--room-biblioteca {
-  box-shadow: inset 0 0 0 2px rgba(133, 103, 166, 0.16);
+.grid-cell--border-top {
+  border-top: 2px solid rgba(77, 105, 119, 0.38);
 }
 
-.grid-cell--room-invernadero {
-  box-shadow: inset 0 0 0 2px rgba(92, 157, 112, 0.16);
+.grid-cell--border-right {
+  border-right: 2px solid rgba(77, 105, 119, 0.38);
 }
 
-.grid-cell--room-galeria {
-  box-shadow: inset 0 0 0 2px rgba(183, 92, 79, 0.16);
+.grid-cell--border-bottom {
+  border-bottom: 2px solid rgba(77, 105, 119, 0.38);
 }
 
-.grid-cell--room-vestibulo {
-  box-shadow: inset 0 0 0 2px rgba(179, 138, 75, 0.16);
-}
-
-.grid-cell--room-despacho {
-  box-shadow: inset 0 0 0 2px rgba(108, 127, 151, 0.16);
+.grid-cell--border-left {
+  border-left: 2px solid rgba(77, 105, 119, 0.38);
 }
 
 .grid-cell:hover,
@@ -324,7 +323,8 @@ h1 {
   font-size: clamp(0.65rem, 1.8vw, 0.85rem);
   font-weight: 700;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .grid-cell__room {
@@ -336,44 +336,50 @@ h1 {
   width: calc(var(--room-label-span, 1) * 100% - 0.8rem);
   padding: 0.2rem 0.35rem;
   color: #294457;
-  font-size: clamp(0.6rem, 1.6vw, 0.8rem);
-  line-height: 1.15;
+  font-size: clamp(0.55rem, 1.45vw, 0.76rem);
+  line-height: 1.1;
   text-align: left;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
-  white-space: normal;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 -1px 2px rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
 }
 
 .grid-cell__traits {
   display: flex;
   position: relative;
   z-index: 1;
-  gap: 0.25rem;
+  gap: 0.45rem;
   align-items: center;
   justify-content: center;
-  min-height: 1.5rem;
+  min-height: 2rem;
   color: #365063;
   font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
-  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
   line-height: 1;
 }
 
 .grid-cell__traits span {
   display: grid;
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 2.65rem;
+  height: 2.65rem;
   place-items: center;
-  border: 1px solid rgba(64, 91, 106, 0.2);
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.42);
-  filter: drop-shadow(0 2px 2px rgba(55, 83, 101, 0.18));
-  font-size: 1.05rem;
+  font-size: 1.75rem;
   line-height: 1;
-  transition: transform 160ms ease, background 160ms ease;
+  transition: transform 160ms ease;
 }
 
 .grid-cell__traits span:hover {
-  background: rgba(255, 255, 255, 0.78);
-  transform: translateY(-2px) scale(1.08);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.grid-cell__traits img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.grid-cell__traits .grid-cell__asset--wide {
+  width: 200%;
+  z-index: 2;
 }
 
 .grid-cell__character {

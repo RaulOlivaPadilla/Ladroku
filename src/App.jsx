@@ -6,10 +6,15 @@ import SuspectList from './components/SuspectPanel/SuspectList.jsx'
 import Toolbar from './components/UI/Toolbar.jsx'
 import case001 from './game/data/cases/case-001.json'
 import case002 from './game/data/cases/case-002.json'
+import { generatedCases } from './game/data/generatedCases.js'
 import { useGameStore } from './game/store/useGameStore.js'
 import './App.css'
 
-const cases = [case001, case002]
+const cases = [
+  ...generatedCases,
+  { ...case001, difficulty: 'Fácil' },
+  { ...case002, difficulty: 'Fácil' },
+]
 
 function App() {
   const [isAccusationOpen, setIsAccusationOpen] = useState(false)
@@ -125,6 +130,7 @@ function App() {
             rooms={currentCase.rooms}
             characters={currentCase.characters}
             positions={playerPositions}
+            clues={currentCase.clues}
             selectedCharacterId={selectedCharacterId}
             invalidRoomId={invalidRoomId}
             onCellClick={handleCellClick}

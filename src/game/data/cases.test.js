@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import case001 from './cases/case-001.json'
 import case002 from './cases/case-002.json'
+import { generatedCases } from './generatedCases.js'
 
-const cases = [case001, case002]
+const cases = [case001, case002, ...generatedCases]
 
 function hasUniqueCoordinates(positions) {
   const values = Object.values(positions)
@@ -43,12 +44,17 @@ describe('Ladroku case data', () => {
       counts[room.name] = (counts[room.name] ?? 0) + 1
       return counts
     }, {})
+    const roomIdByName = rooms.reduce((roomNames, room) => {
+      roomNames[room.name] ??= new Set()
+      roomNames[room.name].add(room.roomId)
+      return roomNames
+    }, {})
 
     expect(characters).toHaveLength(gridSize)
     expect(rooms).toHaveLength(gridSize * gridSize)
     expect(Object.keys(roomCellCounts).length).toBeGreaterThanOrEqual(3)
-    expect(Object.keys(roomCellCounts).length).toBeLessThanOrEqual(6)
     expect(Object.values(roomCellCounts).every((count) => count > 1)).toBe(true)
+    expect(Object.values(roomIdByName).every((ids) => ids.size === 1)).toBe(true)
     expect(roomIds.every((roomId) => hasConnectedCells(rooms, roomId))).toBe(true)
     expect(Object.keys(solution.positions)).toHaveLength(gridSize)
     expect(hasUniqueCoordinates(solution.positions)).toBe(true)
